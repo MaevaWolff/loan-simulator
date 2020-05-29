@@ -1,0 +1,15 @@
+@import 'reset';
+@import '../components/Header/Header';
+@import '../components/Simulator/Simulator';
+
+:root {
+  --primary-color: #836fe8;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #2c2c2c;
+}

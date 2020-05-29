@@ -1,0 +1,12 @@
+.header {
+  margin-top: 80px;
+
+  &__title {
+    font-size: 4em;
+    font-weight: bold;
+  }
+  &__subtitle {
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+}
