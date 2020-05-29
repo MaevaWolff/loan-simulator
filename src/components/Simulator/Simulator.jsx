@@ -38,7 +38,11 @@ export default class Simulator extends Component {
   getMonthlyPayments = () => {
     this.setState({
       resultMonthly:
-        parseInt(this.state.resultAmount) / parseInt(this.state.numberOfMonths)
+        (parseInt(this.state.loanAmount) +
+          (parseInt(this.state.loanAmount) *
+            parseInt(this.state.interestRate)) /
+            100) /
+        parseInt(this.state.numberOfMonths)
     });
     console.log('heyMonth');
   };
