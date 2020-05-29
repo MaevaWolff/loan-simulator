@@ -1,0 +1,19 @@
+.footer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20vh;
+  &__website {
+    text-decoration: none;
+    color: rgb(153, 153, 153);
+    margin-top: 4px;
+  }
+  &__text {
+    color: rgb(153, 153, 153);
+    font-size: 12px;
+  }
+  &__mansa {
+    color: var(--primary-color);
+    margin-top: 4pxx;
+  }
+}
