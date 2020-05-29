@@ -8,12 +8,12 @@ export default class Simulator extends Component {
       interestRate: 0,
       numberOfMonths: 0,
 
-      resultMonthly: 0,
       resultAmount: 0,
+      resultMonthly: 0,
       resultInterst: 0
     };
     this.handleChange = this.handleChange.bind(this);
-    this.addResult = this.addResult.bind(this);
+    this.getTotalAmount = this.getTotalAmount.bind(this);
   }
 
   handleChange = e => {
@@ -25,14 +25,37 @@ export default class Simulator extends Component {
     console.log(value);
   };
 
-  addResult = e => {
-    e.preventDefault();
+  getTotalAmount = () => {
     this.setState({
       resultAmount:
         parseInt(this.state.loanAmount) +
-        parseInt(this.state.interestRate) +
-        parseInt(this.state.numberOfMonths)
+        (parseInt(this.state.loanAmount) * parseInt(this.state.interestRate)) /
+          100
     });
+    console.log('heyAmount');
+  };
+
+  getMonthlyPayments = () => {
+    this.setState({
+      resultMonthly:
+        parseInt(this.state.resultAmount) / parseInt(this.state.numberOfMonths)
+    });
+    console.log('heyMonth');
+  };
+
+  getTotalInterest = () => {
+    this.setState({
+      resultInterst:
+        parseInt(this.state.loanAmount) *
+        (parseInt(this.state.interestRate) / 100)
+    });
+  };
+
+  getResults = e => {
+    e.preventDefault();
+    this.getMonthlyPayments();
+    this.getTotalAmount();
+    this.getTotalInterest();
   };
 
   render() {
@@ -72,13 +95,25 @@ export default class Simulator extends Component {
           <button
             className='simulator__submit'
             value='Calculate'
-            onClick={this.addResult}
+            onClick={this.getResults}
           >
             Calculate
           </button>
         </form>
         <div className='simulator__results'>
-          <p> Total Amount : {this.state.resultAmount}</p>
+          <h3 className='results__title'>Results</h3>
+          <p className='results__item'>
+            Monthly payments: {this.state.resultMonthly}
+          </p>
+          <p className='results__item'>
+            Total Amount : {this.state.resultAmount}
+          </p>
+          <p className='results__item'>
+            Number of payments : {this.state.numberOfMonths}
+          </p>
+          <p className='results__item'>
+            Total Interest : {this.state.resultInterst}
+          </p>
         </div>
       </div>
     );

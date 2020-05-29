@@ -29,3 +29,13 @@
     border: none;
   }
 }
+
+.results__title {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.results__item {
+  margin-top: 20px;
+}
